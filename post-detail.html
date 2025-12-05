@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Tenant Requirement Details - TenantMatch</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -10,11 +10,17 @@
   <!-- Navigation -->
   <nav class="nav">
     <a href="index.html" class="nav-logo">TenantMatch</a>
-    <div class="nav-links">
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <div class="nav-links" id="nav-links">
       <a href="landlord-browse.html" class="nav-link">Find Tenants</a>
       <a href="broker-form.html" class="nav-link">Post Requirements</a>
       <a href="#" class="nav-link">Sign In</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- Detail Page -->

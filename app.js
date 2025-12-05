@@ -864,8 +864,51 @@ function setupFilters() {
 }
 
 
+// Mobile Menu Toggle
+function setupMobileMenu() {
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  const navOverlay = document.getElementById('nav-overlay');
+  
+  if (!hamburger || !navLinks) return;
+  
+  function toggleMenu() {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+    if (navOverlay) navOverlay.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  }
+  
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('open');
+    if (navOverlay) navOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  
+  hamburger.addEventListener('click', toggleMenu);
+  
+  if (navOverlay) {
+    navOverlay.addEventListener('click', closeMenu);
+  }
+  
+  // Close menu when clicking a link
+  navLinks.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  // Setup mobile menu on all pages
+  setupMobileMenu();
   // Check which page we're on
   const path = window.location.pathname;
   
