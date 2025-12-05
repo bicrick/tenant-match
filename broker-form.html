@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Tenant Requirements - TenantMatch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">TenantMatch</a>
+    <div class="nav-links">
+      <a href="landlord-browse.html" class="nav-link">Find Tenants</a>
+      <a href="broker-form.html" class="nav-link active">Post Requirements</a>
+      <a href="#" class="nav-link">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- Form Page -->
+  <main class="form-page">
+    <div class="form-header">
+      <h1 class="form-title">Post Tenant Requirements</h1>
+      <p class="form-subtitle">Create a listing to help landlords find your tenant. Business names remain confidential.</p>
+    </div>
+
+    <form id="broker-form">
+      <!-- Broker Information -->
+      <div class="form-section">
+        <h2 class="form-section-title">Your Information</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="broker-name">Full Name</label>
+            <input type="text" id="broker-name" name="brokerName" class="form-input" placeholder="John Smith" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="broker-company">Company</label>
+            <input type="text" id="broker-company" name="brokerCompany" class="form-input" placeholder="ABC Realty">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="broker-email">Email</label>
+            <input type="email" id="broker-email" name="brokerEmail" class="form-input" placeholder="john@abcrealty.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="broker-phone">Phone</label>
+            <input type="tel" id="broker-phone" name="brokerPhone" class="form-input" placeholder="(214) 555-0123">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="broker-website">Company Website</label>
+            <input type="url" id="broker-website" name="brokerWebsite" class="form-input" placeholder="https://www.abcrealty.com">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tenant Information -->
+      <div class="form-section">
+        <h2 class="form-section-title">Tenant Information</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="business-type">Business Type</label>
+            <input type="text" id="business-type" name="businessType" class="form-input" placeholder="e.g., Restaurant, Medical Office" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="business-category">Industry Category</label>
+            <select id="business-category" name="businessCategory" class="form-select" required>
+              <option value="">Select category...</option>
+              <option value="Food & Beverage">Food & Beverage</option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Retail">Retail</option>
+              <option value="Professional Services">Professional Services</option>
+              <option value="Technology">Technology</option>
+              <option value="Health & Fitness">Health & Fitness</option>
+              <option value="Industrial">Industrial</option>
+              <option value="Education">Education</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="description">Business Description</label>
+          <textarea id="description" name="description" class="form-textarea" placeholder="Describe the tenant's business and any specific needs or preferences..." rows="4"></textarea>
+          <span class="form-hint">This helps landlords understand if their space is a good fit.</span>
+        </div>
+      </div>
+
+      <!-- Location Preferences -->
+      <div class="form-section">
+        <h2 class="form-section-title">Location Preferences</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="location">Primary Market</label>
+            <div class="autocomplete-wrapper">
+              <input type="text" id="location" name="location" class="form-input" placeholder="Type to search markets..." autocomplete="off" required>
+              <div id="location-dropdown" class="autocomplete-dropdown"></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="neighborhoods">Preferred Neighborhoods</label>
+          <input type="text" id="neighborhoods" name="neighborhoods" class="form-input" placeholder="e.g., Bishop Arts, Knox-Henderson, Deep Ellum">
+          <span class="form-hint">Separate multiple neighborhoods with commas.</span>
+        </div>
+      </div>
+
+      <!-- Space Requirements -->
+      <div class="form-section">
+        <h2 class="form-section-title">Space Requirements</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="space-type">Space Type</label>
+            <select id="space-type" name="spaceType" class="form-select" required>
+              <option value="">Select type...</option>
+              <option value="Retail">Retail</option>
+              <option value="Office">Office</option>
+              <option value="Industrial">Industrial / Warehouse</option>
+              <option value="Flex">Flex Space</option>
+              <option value="Mixed">Mixed Use</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="sqft-min">Minimum Size (sqft)</label>
+            <input type="number" id="sqft-min" name="sqftMin" class="form-input" placeholder="2,000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sqft-max">Maximum Size (sqft)</label>
+            <input type="number" id="sqft-max" name="sqftMax" class="form-input" placeholder="5,000" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Special Requirements</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Ground Floor">
+              Ground Floor
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Street Front">
+              Street Front
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Outdoor Space">
+              Outdoor Space
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Loading Dock">
+              Loading Dock
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="High Ceilings">
+              High Ceilings
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Dedicated Parking">
+              Dedicated Parking
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="ADA Compliant">
+              ADA Compliant
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="24/7 Access">
+              24/7 Access
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Fiber Internet">
+              Fiber Internet
+            </label>
+            <label class="checkbox-item">
+              <input type="checkbox" name="requirements" value="Kitchen/Food Prep">
+              Kitchen/Food Prep
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Budget & Terms -->
+      <div class="form-section">
+        <h2 class="form-section-title">Budget & Lease Terms</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="budget-min">Minimum Budget ($/sqft/year)</label>
+            <input type="number" id="budget-min" name="budgetMin" class="form-input" placeholder="20">
+            <span class="form-hint">Optional - leave blank if you prefer not to disclose</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="budget-max">Maximum Budget ($/sqft/year)</label>
+            <input type="number" id="budget-max" name="budgetMax" class="form-input" placeholder="35">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="lease-term">Preferred Lease Term</label>
+            <select id="lease-term" name="leaseTerm" class="form-select">
+              <option value="">Select term...</option>
+              <option value="1-2 years">1-2 years</option>
+              <option value="3-5 years">3-5 years</option>
+              <option value="5-7 years">5-7 years</option>
+              <option value="7-10 years">7-10 years</option>
+              <option value="10+ years">10+ years</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="move-in">Target Move-in Date</label>
+            <select id="move-in" name="moveInDate" class="form-select">
+              <option value="">Select timeframe...</option>
+              <option value="Immediate">Immediate</option>
+              <option value="Q1 2024">Q1 2024</option>
+              <option value="Q2 2024">Q2 2024</option>
+              <option value="Q3 2024">Q3 2024</option>
+              <option value="Q4 2024">Q4 2024</option>
+              <option value="2025">2025</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary btn-lg">Post Requirement</button>
+        <button type="button" class="btn btn-outline btn-lg" onclick="window.history.back()">Cancel</button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Toast for notifications -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

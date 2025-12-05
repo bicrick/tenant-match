@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenant Requirement Details - TenantMatch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">TenantMatch</a>
+    <div class="nav-links">
+      <a href="landlord-browse.html" class="nav-link">Find Tenants</a>
+      <a href="broker-form.html" class="nav-link">Post Requirements</a>
+      <a href="#" class="nav-link">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- Detail Page -->
+  <main class="detail-page">
+    <a href="landlord-browse.html" class="back-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to listings
+    </a>
+
+    <div class="detail-header">
+      <div>
+        <h1 id="detail-business-type" class="detail-title">Loading...</h1>
+        <p id="detail-location" class="detail-location"></p>
+      </div>
+      <span id="detail-category" class="detail-badge"></span>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-main">
+        <!-- Space Specifications -->
+        <div class="detail-section">
+          <h2 class="detail-section-title">Space Requirements</h2>
+          <div class="detail-specs">
+            <div class="spec-item">
+              <span class="spec-label">Space Size</span>
+              <span id="detail-sqft" class="spec-value"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Budget Range</span>
+              <span id="detail-budget" class="spec-value"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Space Type</span>
+              <span id="detail-space-type" class="spec-value"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Lease Term</span>
+              <span id="detail-lease-term" class="spec-value"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Target Move-in</span>
+              <span id="detail-move-in" class="spec-value"></span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Posted</span>
+              <span id="detail-posted" class="spec-value"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preferred Neighborhoods -->
+        <div class="detail-section">
+          <h2 class="detail-section-title">Preferred Neighborhoods</h2>
+          <div id="detail-neighborhoods" class="amenities-list">
+            <!-- Will be populated by JS -->
+          </div>
+        </div>
+
+        <!-- Special Requirements -->
+        <div class="detail-section">
+          <h2 class="detail-section-title">Special Requirements</h2>
+          <div id="detail-requirements" class="amenities-list">
+            <!-- Will be populated by JS -->
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="detail-section">
+          <h2 class="detail-section-title">Additional Details</h2>
+          <p id="detail-description" style="color: var(--text-medium); line-height: 1.7;"></p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="detail-sidebar">
+        <div class="broker-card">
+          <div class="broker-card-title">Listed By</div>
+          <div class="broker-info">
+            <div id="broker-avatar" class="broker-avatar"></div>
+            <div class="broker-details">
+              <h4 id="broker-name"></h4>
+              <p id="broker-company"></p>
+            </div>
+          </div>
+          <div class="broker-contact-info">
+            <div class="broker-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <path d="m22 6-10 7L2 6"/>
+              </svg>
+              <span id="broker-email"></span>
+            </div>
+            <div class="broker-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              <span id="broker-phone"></span>
+            </div>
+            <div class="broker-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <a id="broker-website" href="#" target="_blank" style="color: var(--primary-blue);"></a>
+            </div>
+          </div>
+          <button class="btn btn-primary" style="width: 100%;">Contact Broker</button>
+        </div>
+
+        <div class="broker-card">
+          <div class="broker-card-title">Interested in this tenant?</div>
+          <p style="font-size: 14px; color: var(--text-medium); margin-bottom: 16px;">
+            If your property matches these requirements, reach out to the broker to discuss opportunities.
+          </p>
+          <button class="btn btn-outline" style="width: 100%;">Save to Favorites</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

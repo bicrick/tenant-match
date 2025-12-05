@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Tenants - TenantMatch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">TenantMatch</a>
+    <div class="nav-links">
+      <a href="landlord-browse.html" class="nav-link active">Find Tenants</a>
+      <a href="broker-form.html" class="nav-link">Post Requirements</a>
+      <a href="#" class="nav-link">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <input type="text" id="location-search" class="search-input" placeholder="Search by location...">
+    
+    <div class="filter-group">
+      <button class="filter-btn">
+        <span>Business Type</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="filter-dropdown">
+        <div class="filter-option selected" data-filter="businessType" data-value="">All Types</div>
+        <div class="filter-option" data-filter="businessType" data-value="Food & Beverage">Food & Beverage</div>
+        <div class="filter-option" data-filter="businessType" data-value="Healthcare">Healthcare</div>
+        <div class="filter-option" data-filter="businessType" data-value="Retail">Retail</div>
+        <div class="filter-option" data-filter="businessType" data-value="Professional Services">Professional Services</div>
+        <div class="filter-option" data-filter="businessType" data-value="Technology">Technology</div>
+        <div class="filter-option" data-filter="businessType" data-value="Health & Fitness">Health & Fitness</div>
+        <div class="filter-option" data-filter="businessType" data-value="Industrial">Industrial</div>
+        <div class="filter-option" data-filter="businessType" data-value="Education">Education</div>
+      </div>
+    </div>
+    
+    <div class="filter-group">
+      <button class="filter-btn">
+        <span>Size</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="filter-dropdown">
+        <div class="filter-option selected" data-filter="sqftRange" data-value="">Any Size</div>
+        <div class="filter-option" data-filter="sqftRange" data-value="0-2000">Under 2,000 sqft</div>
+        <div class="filter-option" data-filter="sqftRange" data-value="2000-5000">2,000 - 5,000 sqft</div>
+        <div class="filter-option" data-filter="sqftRange" data-value="5000-10000">5,000 - 10,000 sqft</div>
+        <div class="filter-option" data-filter="sqftRange" data-value="10000-20000">10,000 - 20,000 sqft</div>
+        <div class="filter-option" data-filter="sqftRange" data-value="20000">20,000+ sqft</div>
+      </div>
+    </div>
+    
+    <div class="filter-group">
+      <button class="filter-btn">
+        <span>Budget</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="filter-dropdown">
+        <div class="filter-option selected" data-filter="budgetRange" data-value="">Any Budget</div>
+        <div class="filter-option" data-filter="budgetRange" data-value="0-15">Under $15/sqft</div>
+        <div class="filter-option" data-filter="budgetRange" data-value="15-25">$15 - $25/sqft</div>
+        <div class="filter-option" data-filter="budgetRange" data-value="25-35">$25 - $35/sqft</div>
+        <div class="filter-option" data-filter="budgetRange" data-value="35-50">$35 - $50/sqft</div>
+        <div class="filter-option" data-filter="budgetRange" data-value="50">$50+/sqft</div>
+      </div>
+    </div>
+    
+    <span id="results-count" class="results-count">12 tenant requirements</span>
+  </div>
+
+  <!-- Main Content -->
+  <div class="listings-full">
+    <div class="listings-header-full">
+      <div>
+        <h1 class="listings-title">Tenant Requirements</h1>
+        <p class="listings-subtitle">Browse active tenant searches matching your property</p>
+      </div>
+      <button id="download-csv" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download CSV
+      </button>
+    </div>
+    <div class="table-container">
+      <table class="data-table" id="listings-table">
+        <thead>
+          <tr>
+            <th data-sort="businessType">Business Type <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="businessCategory">Category <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="location">Location <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="sqftMin">Size (sqft) <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="budgetMin">Budget ($/sqft) <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="leaseTerm">Lease Term <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="moveInDate">Move-in <span class="sort-icon">&#9650;</span></th>
+            <th data-sort="brokerName">Broker <span class="sort-icon">&#9650;</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="listings-container">
+          <!-- Rows will be rendered by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
